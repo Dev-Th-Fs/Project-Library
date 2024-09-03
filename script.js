@@ -1,7 +1,7 @@
 
 const myLibrary = [];
 
-function book(title, author, pages, status){
+function Book(title, author, pages, status){
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -12,15 +12,11 @@ function book(title, author, pages, status){
 }
 
 
-const book1 = new book("The Hobbit", "JK Rowling", 239, "Not Read");
-const book2 = new book("Jurassic Park", "Talha", 200, "Not Read");
+
 
 function addBookToLibrary(obj){
     myLibrary.push(obj)
 }
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
 
 function displayBooks(){
 
@@ -57,7 +53,12 @@ function displayBooks(){
     })
 }
 
-displayBooks();
+const addBookBtn = document.querySelector(".add-btn");
+const dialog = document.querySelector("dialog");
+addBookBtn.addEventListener("click", () => {
+    dialog.showModal();
+})
+
 
 
 
