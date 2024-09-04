@@ -25,7 +25,39 @@
         <tbody></tbody>
       </table>
       <dialog>
-        <form action=""></form>
+        <form method="dialog">
+          <fieldset>
+            <legend>Add New Book</legend>
+            <p>
+              <label for="titile">Title</label>
+              <input type="text" name="title" id="title" />
+            </p>
+            <p>
+              <label for="author">Author</label>
+              <input type="text" name="author" id="author" />
+            </p>
+            <p>
+              <label for="pages">Total Pages</label>
+              <input type="number" name="pages" id="pages" />
+            </p>
+            <p>
+              <input type="radio" id="status" name="status" value="read" />
+              <label for="read">Have Read</label><br />
+              <input
+                type="radio"
+                id="status"
+                name="status"
+                value="not read"
+                checked
+              />
+              <label for="not read">Not Read</label>
+            </p>
+            <p>
+              <button type="submit" class="insert-btn">Add</button>
+              <button type="button" class="cancel-btn">Cancel</button>
+            </p>
+          </fieldset>
+        </form>
       </dialog>
     </main>
     <script src="script.js"></script>
