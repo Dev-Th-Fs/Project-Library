@@ -1,38 +1,29 @@
 const myLibrary = [];
 
-function book(title, author, pages, status){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.info = function(){
-        return `${this.title} by ${this.author}, ${this.pages}, ${this.status}`;
-    }
+function Book(title, author, pages, status) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.status = status;
+  this.info = function () {
+    return `${this.title} by ${this.author}, ${this.pages}, ${this.status}`;
+  };
 }
 
-
-const book1 = new book("The Hobbit", "JK Rowling", 239, "Not Read");
-const book2 = new book("Jurassic Park", "Talha", 200, "Not Read");
-
-function addBookToLibrary(obj){
-    myLibrary.push(obj)
-}
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-
-function displayBooks(){
-
-const table = document.querySelector("#myTable tbody");
+Book.prototype.resetStatus = function() {
+    this.status = this.status === "Have Read" ? "Not Read" : "Have Read";
+};
 
 function addBookToLibrary(obj) {
-  table.textContent = "";
   myLibrary.push(obj);
   displayBooks();
 }
 
 function displayBooks() {
-  myLibrary.forEach((element) => {
+  const table = document.querySelector("#myTable tbody");
+  table.textContent = "";
+
+  myLibrary.forEach((element, index) => {
     const row = table.insertRow();
     const titleCell = row.insertCell(0);
     const authorCell = row.insertCell(1);
@@ -40,7 +31,6 @@ function displayBooks() {
     const statusCell = row.insertCell(3);
     const deleteCell = row.insertCell(4);
 
-    row.setAttribute("data-index", generateId());
     titleCell.textContent = element.title;
     authorCell.textContent = element.author;
     pageCell.textContent = element.pages;
@@ -52,6 +42,12 @@ function displayBooks() {
     statusBtn.className = "status-btn";
     statusBtn.textContent = "Change Status";
 
+    statusBtn.addEventListener("click", ()=> {
+        element.resetStatus();
+        console.log("status change");
+        displayBooks();
+    })
+
     span.appendChild(statusBtn);
     statusCell.appendChild(span);
 
@@ -60,18 +56,43 @@ function displayBooks() {
     deleteBtn.className = "delete-btn";
     deleteBtn.textContent = "Delete";
 
-        deleteCell.appendChild(deleteBtn)
+    deleteBtn.addEventListener("click", ()=> {
+        myLibrary.splice(index, 1);
+        displayBooks();
     })
+
+
+    deleteCell.appendChild(deleteBtn);
+  });
 }
 
-displayBooks();
+const dialog = document.querySelector("dialog");
 
+document.querySelector(".add-btn").addEventListener("click", () => {
+  dialog.showModal();
+});
 
+document.querySelector(".cancel-btn").addEventListener("click", () => {
+  dialog.close();
+});
 
+const form = document.querySelector("form");
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
+  const title = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const pages = document.querySelector("#pages").value;
+  const status = document.querySelector(`input[name="status"]:checked`).value;
 
+  const book = new Book(title, author, pages, status);
 
+  addBookToLibrary(book);
 
+  dialog.close();
+
+  form.reset();
+});
 
 

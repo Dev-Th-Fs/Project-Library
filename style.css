@@ -111,6 +111,7 @@ td {
   text-align: left;
   align-content: start;
   text-wrap: wrap;
+  font-size: 1.2rem;
 }
 
 td:nth-child(1),
@@ -121,11 +122,17 @@ th:nth-child(1) {
 td:nth-child(2),
 th:nth-child(2) {
   width: 200px;
+  overflow-wrap: break-word;
 }
 
 td:nth-child(3),
 th:nth-child(3) {
   width: 100px;
+}
+
+td:nth-child(4),
+th:nth-child(4){
+  width: 228px;
 }
 
 tbody tr:nth-child(odd) {
@@ -134,14 +141,18 @@ tbody tr:nth-child(odd) {
 
 tbody td:nth-child(4) {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  justify-content: space-between;
 }
+
+tbody td:nth-child(4)
 
 .status-btn {
   font-size: 12px;
-  border: 1px  solid black;
   border-radius: 20px;
   line-height: 14px;
+  padding: 4px 10px;
+  
 }
 
 .delete-btn {
@@ -154,12 +165,43 @@ fieldset p:nth-child(4) {
   flex-direction: column;
 }
 
-.delete-btn:hover, .status-btn:hover{
-  cursor: pointer;
+dialog {
+  margin: auto;
+  width: 50%;
+  border-radius: 4px;
+  border: none;
   
 }
 
-.delete-btn:active{
-  background-color: antiquewhite;
- 
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+fieldset {
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+
+.input-fields:last-child{
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+
+.input-fields:last-child button{
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 4px;
 }
