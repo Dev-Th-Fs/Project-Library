@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -21,7 +21,8 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: "Poppins", sans-serif;
+  font-family: "Nanum Myeongjo", serif;
+  background-color: #eff6ff;
 }
 /*
     5. Improve media defaults
@@ -67,12 +68,30 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
-  background-color: aqua;
+  background-color: #bfdbfe;
   align-items: center;
 }
 
 header h1 {
   font-size: 24px;
+}
+
+button {
+  color: white;
+  border: none;
+  border-radius: 10px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+button:active {
+  background-color: #3b83f6cc;
 }
 
 header button {
@@ -110,7 +129,7 @@ th:nth-child(3) {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #f2f2f2;
+  background-color: #dbeafe;
 }
 
 tbody td:nth-child(4) {
@@ -120,21 +139,27 @@ tbody td:nth-child(4) {
 
 .status-btn {
   font-size: 12px;
-  border: 1px solid black;
+  border: 1px  solid black;
   border-radius: 20px;
+  line-height: 14px;
 }
 
 .delete-btn {
   padding: 5px 30px;
   border-radius: 4px;
-  border: 1px solid black;
 }
 
-.delete-btn:hover,
-.status-btn:hover {
+fieldset p:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-btn:hover, .status-btn:hover{
   cursor: pointer;
+  
 }
 
-.delete-btn:active {
+.delete-btn:active{
   background-color: antiquewhite;
+ 
 }

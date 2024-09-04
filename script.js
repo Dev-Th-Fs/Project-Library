@@ -1,16 +1,27 @@
 const myLibrary = [];
 
-function book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages}, ${this.status}`;
-  };
+function book(title, author, pages, status){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+    this.info = function(){
+        return `${this.title} by ${this.author}, ${this.pages}, ${this.status}`;
+    }
 }
 
-const generateId = () => Math.random().toString(36).substring(2, 9);
+
+const book1 = new book("The Hobbit", "JK Rowling", 239, "Not Read");
+const book2 = new book("Jurassic Park", "Talha", 200, "Not Read");
+
+function addBookToLibrary(obj){
+    myLibrary.push(obj)
+}
+
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+
+function displayBooks(){
 
 const table = document.querySelector("#myTable tbody");
 
@@ -49,28 +60,18 @@ function displayBooks() {
     deleteBtn.className = "delete-btn";
     deleteBtn.textContent = "Delete";
 
-    deleteCell.appendChild(deleteBtn);
-  });
+        deleteCell.appendChild(deleteBtn)
+    })
 }
 
-const addBtn = document.querySelector(".add-btn");
-const dialog = document.querySelector("dialog");
-const form = document.querySelector("form");
+displayBooks();
 
-addBtn.addEventListener("click", () => {
-  dialog.showModal();
-});
 
-const insertBookBtn = document.querySelector(".insert-btn");
-insertBookBtn.addEventListener("click", () => {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
 
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value;
-    const status = document.querySelector("#status").value;
-    addBookToLibrary(new book(title, author, pages, status));
-    dialog.close();
-  });
-});
+
+
+
+
+
+
+
